@@ -231,5 +231,3 @@ int main()
 	printf("Image a ete ecrit et sauvegarder dans le fichier source avec le nom donne\n");
 	free(imageS);
 }
-
-
