@@ -1,14 +1,14 @@
 // TP3.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
 
-#include <iostream>
+#include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
-#include <sys/timeb.h>
-#include <time.h>
+#include<sys/timeb.h>
+#include<time.h>
 
-
+//ClearBuffer
 void clearStdinBuffer()
 {
 	char c;
@@ -102,7 +102,9 @@ struct IMAGERAW {
 };
 typedef struct IMAGERAW IMAGE;
 
-//Fonction lire_image() qui permettra de lire le fichier image.ffm
+//Fonction lire_image() qui permettra de lire le fichier image.raw et retourne le pointeur im sur IMAGE
+//Input: l,h, fpI
+//Output: Rien
 IMAGE* lire_image() {
 
 	char nomFichier[80];
@@ -153,6 +155,9 @@ IMAGE* lire_image() {
 	return(im);
 
 }
+//Fonction de cryptage et decryptage
+//Input: cle, choix de la direction de calcul de la matrice
+//Output:none
 IMAGE* crypter_decrypter(IMAGE* imageS) {
 	int i, j, L, m, n, H, num;
 	struct _timeb start, finish;
@@ -205,6 +210,9 @@ IMAGE* crypter_decrypter(IMAGE* imageS) {
 	return(imageS);
 
 }
+//Fonction qui permet d'ecrire et de sauvegarder l'image crypter ou decrypter
+//Input: None
+//Output: Fichier sauvegarder
 void ecire_image(IMAGE* imageD) {
 	char nomFichier[80];
 	FILE* fpD;
@@ -215,7 +223,7 @@ void ecire_image(IMAGE* imageD) {
 	fwrite(imageD->image, sizeof(UCHAR), imageD->hauteur * imageD->largeur, fpD); // voir si fwrite() retourne une valeur valide
 	fclose(fpD);
 }
-
+//main
 int main()
 {
 	IMAGE* imageS, * imageD;
