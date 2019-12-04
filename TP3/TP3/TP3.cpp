@@ -20,7 +20,7 @@ void clearStdinBuffer()
 /* Titre: lireEntierValidationETConversion
 Description: permet d'introduire un nombre entier (0 et (2^31) - 1) au clavier
 en faire la conversion et en faire la validation
-l
+
 INPUT: aucun
 OUTPUT: valeur entiere convertie
 
