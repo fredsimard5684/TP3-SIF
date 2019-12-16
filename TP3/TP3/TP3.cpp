@@ -194,9 +194,9 @@ IMAGE* crypter_decrypter(IMAGE* imageS) {
 	}
 	if (num == 2) {
 		_ftime(&start);
-		for (m = 0; m < L; m++) // Acces avec positionnement spatial
-			for (n = 0; n < H; n++)
-				imageS->image[n * L + m] = imageS->image[n * L + m] ^ cle; /*XOR*/
+		for (n = 0; n < L; n++) // Acces avec positionnement spatial
+			for (m = 0; m < H; m++) 
+				imageS->image[m * L + n] = imageS->image[m * L + n] ^ cle; /*XOR*/
 
 		_ftime(&finish);
 		duration = ((unsigned long)finish.time * 1000L + (unsigned long)finish.millitm) - ((unsigned long)start.time * 1000L + (unsigned long)start.millitm);
@@ -230,6 +230,8 @@ int main()
 	ecire_image(imageS);
 	printf("Image a ete ecrit et sauvegarder dans le fichier source avec le nom donne\n");
 	free(imageS);
+
+	return 0;
 }
 
 
